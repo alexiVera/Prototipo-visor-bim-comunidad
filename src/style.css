@@ -1,0 +1,254 @@
+:root {
+  color: #1f2933;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: #eef1ec;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+button,
+select,
+input {
+  font: inherit;
+}
+
+#app {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background:
+    linear-gradient(180deg, rgba(238, 241, 236, 0.95) 0 46%, transparent 46%),
+    linear-gradient(180deg, #eef1ec 0%, #edf1ea 46%, #d8dfcf 47%, #bac5ae 100%);
+}
+
+#viewer-shell {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+}
+
+#viewport {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+}
+
+#container {
+  position: absolute;
+  inset: 0;
+}
+
+#empty-state {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  gap: 0.35rem;
+  width: min(420px, calc(100% - 40px));
+  padding: 1rem 1.1rem;
+  color: #273540;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+#empty-state strong {
+  font-size: 1.25rem;
+}
+
+#empty-state span {
+  color: #52616b;
+  font-size: 0.95rem;
+}
+
+#status-pill {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  max-width: calc(100% - 36px);
+  padding: 0.55rem 0.75rem;
+  border: 1px solid rgba(42, 54, 64, 0.14);
+  border-radius: 8px;
+  color: #23313a;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#properties-panel {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border-left: 1px solid #c8d2d8;
+  background: rgba(246, 248, 249, 0.94);
+  overflow: hidden;
+}
+
+#properties-panel header {
+  display: grid;
+  gap: 0.25rem;
+  padding: 1rem;
+  border-bottom: 1px solid #d6dde1;
+}
+
+#properties-panel header span {
+  color: #111827;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+#properties-panel header small {
+  color: #66737d;
+}
+
+#properties-content {
+  min-height: 0;
+  height: 100%;
+  padding: 0.75rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.empty-panel {
+  color: #6b7680;
+  line-height: 1.45;
+}
+
+.pset {
+  margin: 0 0 0.75rem;
+  border: 1px solid #d5dee3;
+  border-radius: 8px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.pset summary {
+  cursor: pointer;
+  padding: 0.72rem 0.8rem;
+  color: #26323b;
+  font-weight: 700;
+  background: #eef3f5;
+}
+
+.property-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 44%) minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.58rem 0.8rem;
+  border-top: 1px solid #ecf0f2;
+  font-size: 0.87rem;
+}
+
+.property-row dt {
+  margin: 0;
+  color: #64717b;
+  overflow-wrap: anywhere;
+}
+
+.property-row dd {
+  margin: 0;
+  color: #1f2933;
+  overflow-wrap: anywhere;
+}
+
+#action-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 64px;
+  padding: 0.7rem 0.85rem;
+  border-top: 1px solid #bcc8ce;
+  background: #f7fafb;
+  box-shadow: 0 -6px 24px rgba(25, 40, 50, 0.08);
+  overflow-x: auto;
+}
+
+button,
+.file-button,
+select {
+  height: 40px;
+  border: 1px solid #c3cdd3;
+  border-radius: 8px;
+  color: #1f2a32;
+  background: #ffffff;
+}
+
+button,
+.file-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 96px;
+  padding: 0 0.85rem;
+  cursor: pointer;
+  font-weight: 650;
+}
+
+button:hover:not(:disabled),
+.file-button:hover {
+  border-color: #7994a3;
+  background: #eef5f7;
+}
+
+button:disabled,
+select:disabled {
+  color: #98a3aa;
+  cursor: not-allowed;
+  background: #edf1f3;
+}
+
+.file-button input {
+  display: none;
+}
+
+.story-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: #50606b;
+  font-size: 0.9rem;
+}
+
+.story-filter select {
+  width: 220px;
+  padding: 0 0.7rem;
+}
+
+body.model-loaded #empty-state {
+  display: none;
+}
+
+@media (max-width: 840px) {
+  #viewer-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1fr) 250px;
+  }
+
+  #properties-panel {
+    border-left: 0;
+    border-top: 1px solid #c8d2d8;
+  }
+
+  .story-filter {
+    margin-left: 0;
+  }
+}

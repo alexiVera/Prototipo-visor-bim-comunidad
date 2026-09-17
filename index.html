@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualizador BIM IFC</title>
+  </head>
+  <body>
+    <div id="app">
+      <main id="viewer-shell">
+        <section id="viewport" aria-label="Vista 3D BIM">
+          <div id="container"></div>
+          <div id="empty-state">
+            <strong>Vista lista</strong>
+            <span>Carga un archivo IFC local para convertirlo a fragments y visualizarlo.</span>
+          </div>
+          <div id="status-pill">Sin modelo cargado</div>
+        </section>
+
+        <aside id="properties-panel" aria-label="Propiedades del elemento">
+          <header>
+            <span>Propiedades</span>
+            <small id="selection-label">Sin seleccion</small>
+          </header>
+          <div id="properties-content" class="empty-panel">
+            Selecciona un elemento del modelo para revisar sus atributos y property sets.
+          </div>
+        </aside>
+      </main>
+
+      <nav id="action-bar" aria-label="Herramientas del visualizador">
+        <label class="file-button">
+          <input id="ifc-input" type="file" accept=".ifc,.ifczip" />
+          Cargar IFC
+        </label>
+        <button id="hide-selected" disabled>Ocultar</button>
+        <button id="isolate-selected" disabled>Aislar</button>
+        <button id="show-all" disabled>Mostrar todo</button>
+        <label class="story-filter">
+          <span>Building story</span>
+          <select id="story-select" disabled>
+            <option value="">Todas</option>
+          </select>
+        </label>
+      </nav>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
